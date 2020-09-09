@@ -398,6 +398,7 @@ public class SchemaRegistryResource extends BaseRegistryResource {
                                   @Context UriInfo uriInfo,
                                   @Context HttpHeaders httpHeaders,
                                   @Context SecurityContext securityContext) {
+        LOG.info("入参：schemaMetadata：{},uriInfo:{},httpHeaders:{},securityContext:{}",schemaMetadata,uriInfo,httpHeaders,securityContext);
         return handleLeaderAction(uriInfo, () -> {
             Response response;
             try {

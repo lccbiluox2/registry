@@ -386,7 +386,12 @@ public class SchemaVersionLifecycleManager {
         storageManager.add(schemaBranchVersionMapping);
 
         String storableNamespace = new SchemaFieldInfoStorable().getNameSpace();
+        // 这里获取你的scheam类型，如果没有，那么报错
         List<SchemaFieldInfo> schemaFieldInfos = getSchemaProvider(type).generateFields(schemaVersionStorable.getSchemaText());
+        if(schemaFieldInfos == null || schemaFieldInfos.size() < 1){
+            LOG.info("字段的元数据namespace为空");
+            return schemaVersionStorable.toSchemaVersionInfo();
+        }
         for (SchemaFieldInfo schemaFieldInfo : schemaFieldInfos) {
             final Long fieldInstanceId = storageManager.nextId(storableNamespace);
             SchemaFieldInfoStorable schemaFieldInfoStorable = SchemaFieldInfoStorable.fromSchemaFieldInfo(schemaFieldInfo, fieldInstanceId);

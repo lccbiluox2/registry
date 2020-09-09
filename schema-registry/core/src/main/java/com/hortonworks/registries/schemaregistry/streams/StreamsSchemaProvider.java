@@ -42,12 +42,12 @@ public class StreamsSchemaProvider extends AbstractSchemaProvider {
 
     @Override
     public String getName() {
-        return null;
+        return "streams";
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "streams";
     }
 
     @Override

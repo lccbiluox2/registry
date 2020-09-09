@@ -49,6 +49,12 @@ import static org.apache.avro.Schema.Type.RECORD;
  *
  * Example of Avro schema containing dependencies is given below.
  *
+ * {@link SchemaResolver}的Avro实现，它解析所有依赖的模式并构建一个有效的模式。
+ *
+ * 在avro模式中，可以使用' includeSchemas '属性添加依赖模式列表。它包含下面提到的每个模式的名称和版本。
+ *
+ * - name:模式注册表中该模式的唯一名称，即{@link com.hortonworks.registries.schemaregistry.SchemaMetadata#name}。
+ * - version ： 使用的模式的版本号是{@link SchemaVersionKey#version}。如果没有提到此属性，则在构建有效模式时将认为它是该模式的最新版本。
  * account schema:
  * <pre> {@code
  *

@@ -86,6 +86,8 @@ public interface SchemaProvider {
     /**
      * Returns all the fields in the given {@code schemaText} by traversing the whole schema including nested/complex types.
      *
+     * 通过遍历整个模式(包括嵌套/复杂类型)，返回给定{@code schemaText}中的所有字段。
+     *
      * @param schemaText schema text
      *
      * @return all the fields in the given {@code schemaText}

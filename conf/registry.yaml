@@ -7,6 +7,12 @@ modules:
         - providerClass: "com.hortonworks.registries.schemaregistry.avro.AvroSchemaProvider"
           defaultSerializerClass: "com.hortonworks.registries.schemaregistry.serdes.avro.AvroSnapshotSerializer"
           defaultDeserializerClass: "com.hortonworks.registries.schemaregistry.serdes.avro.AvroSnapshotDeserializer"
+        - providerClass: "com.hortonworks.registries.schemaregistry.avro.JsonSchemaProvider"
+          defaultSerializerClass: "com.hortonworks.registries.schemaregistry.serdes.avro.AvroSnapshotSerializer"
+          defaultDeserializerClass: "com.hortonworks.registries.schemaregistry.serdes.avro.AvroSnapshotDeserializer"
+        - providerClass: "com.hortonworks.registries.schemaregistry.streams.StreamsSchemaProvider"
+            defaultSerializerClass: "com.hortonworks.registries.schemaregistry.serdes.avro.AvroSnapshotSerializer"
+            defaultDeserializerClass: "com.hortonworks.registries.schemaregistry.serdes.avro.AvroSnapshotDeserializer"
       # schema reviewer configuration
       customSchemaStateExecutor:
         className: "com.hortonworks.registries.schemaregistry.state.DefaultCustomSchemaStateExecutor"
@@ -75,15 +81,15 @@ fileStorageConfiguration:
 
 # MySQL based jdbc provider configuration is:
 storageProviderConfiguration:
- providerClass: "com.hortonworks.registries.storage.impl.jdbc.JdbcStorageManager"
- properties:
-   db.type: "mysql"
-   queryTimeoutInSecs: 30
-   db.properties:
-     dataSourceClassName: "com.mysql.jdbc.jdbc2.optional.MysqlDataSource"
-     dataSource.url: "jdbc:mysql://localhost/schema_registry"
-     dataSource.user: "registry_user"
-     dataSource.password: "registry_password"
+  providerClass: "com.hortonworks.registries.storage.impl.jdbc.JdbcStorageManager"
+  properties:
+    db.type: "mysql"
+    queryTimeoutInSecs: 30
+    db.properties:
+      dataSourceClassName: "com.mysql.cj.jdbc.MysqlDataSource"
+      dataSource.url: "jdbc:mysql://localhost:3306/schema_registry_json"
+      dataSource.user: "root"
+      dataSource.password: "12345678"
 
 #swagger configuration
 swagger:
@@ -117,4 +123,3 @@ logging:
 #    principal: "schema-registry/hostname@GCE.CLOUDERA.COM"
 #    keytab: "/tmp/schema-registry.keytab"
 
-  

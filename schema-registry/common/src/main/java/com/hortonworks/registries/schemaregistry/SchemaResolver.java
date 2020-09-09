@@ -21,10 +21,15 @@ import com.hortonworks.registries.schemaregistry.errors.SchemaNotFoundException;
 /**
  * This interface is defined for resolving schemas which have dependencies on other schemas. {@link com.hortonworks.registries.schemaregistry.errors.CyclicSchemaDependencyException}
  * is thrown when there are cyclic dependencies among set of schemas.
+ *
+ * 定义此接口是为了解析依赖于其他模式的模式。{@link com.hortonworks.registries.schemaregistry.errors。当一组模式之间存在循环依赖时，
+ * 抛出CyclicSchemaDependencyException}。
  */
 public interface SchemaResolver {
 
     /**
+     * 解析所有依赖关系后，解析给定模式的有效模式。
+     *
      * @return Resolved effective schema of the given schema after resolving all the dependencies.
      *
      * @param schemaText text of the schema for which dependencies should be resolved.
