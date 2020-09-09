@@ -127,6 +127,7 @@ export default class SchemaVersionForm extends Component {
       schemaText,
       description
     };
+    console.log("lcc1");
     return SchemaREST.getCompatibility(schemaObj.schemaName, {body: JSON.stringify(JSON.parse(schemaText))})
       .then((result)=>{
         if(result.compatible){
@@ -140,6 +141,7 @@ export default class SchemaVersionForm extends Component {
   validateSchemaCompatibility = () => {
     let {schemaText} = this.state;
     try{
+      console.log('111111111111');
       const schemaTextStr = JSON.stringify(JSON.parse(schemaText));
       this.setState({schemaTextCompatibility: statusCode.Processing});
       SchemaREST.getCompatibility(this.props.schemaObj.schemaName, {body: schemaTextStr})
