@@ -457,7 +457,7 @@ export default class SchemaDetail extends Component{
               {renderCodemirror ?
               (<ReactCodemirror
                 ref="JSONCodemirror"
-                value={JSON.stringify(JSON.parse(versionObj.schemaText), null, ' ')}
+                value={versionObj.schemaText}
                 options={jsonoptions}
               />)
               : (
