@@ -31,12 +31,18 @@ import java.util.List;
 public class StreamsSchemaProviderTest {
     private static final Logger LOG = LoggerFactory.getLogger(StreamsSchemaProviderTest.class);
 
+    /**
+     * 这种页面支持的如下：
+     * 请打开这个文件，直接复制到页面就好了  /streams/trucks.stsc
+     * @throws Exception
+     */
     @Test
     public void testStreamsSchema() throws Exception {
         StreamsSchemaProvider streamsSchemaProvider = new StreamsSchemaProvider();
         try (InputStream trucksSchemaStream = StreamsSchemaProviderTest.class.getResourceAsStream("/streams/trucks.stsc");) {
             List<SchemaFieldInfo> schemaFieldInfos = streamsSchemaProvider.generateFields(IOUtils.toString(trucksSchemaStream));
             LOG.info("schemaFieldInfos = " + schemaFieldInfos);
+            System.out.println("schemaFieldInfos = " + schemaFieldInfos);
             Assert.assertEquals(11, schemaFieldInfos.size());
         }
     }
